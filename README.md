@@ -2,7 +2,7 @@
 
 *(Inspired by the [Census Dotmap](http://bmander.com/dotmap/index.html))*
 
-This script creates a large graphic ([original](http://nicolaskruchten.github.io/mtlelectiondotmap2013/mtlelectiondotmap2013.png), [zoomable](http://zoom.it/rVnM)) showing one coloured dot per vote cast for the top three candidates in the election for the mayoralty of Montreal in 2013: 
+This script creates a large graphic ([1000 DPI original](http://nicolaskruchten.github.io/mtlelectiondotmap2013/mtlelectiondotmap2013.png), [Zoom.it zoomable](http://zoom.it/rVnM)) showing one coloured dot per vote cast for the top three candidates in the election for the mayoralty of Montreal in 2013: 
 
 ![image](http://nicolaskruchten.github.io/mtlelectiondotmap2013/mtlelectiondotmap2013-small.png)
 

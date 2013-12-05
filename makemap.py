@@ -38,12 +38,12 @@ def getVotes():
         numVotes = int(v["Votes"])
         color = None
         if "BERGERON" in v["Candidat"]: #green
-            color = 'g'#78BE20'
+            color = 'g'
         elif "CODERRE" in v["Candidat"]: #red
-            color = 'r'#662d91'
+            color = 'r'
         elif "JOLY" in v["Candidat"]: #blue
-            color = 'b'#fdb813'
-        else: #blue
+            color = 'b'
+        else: #grey
             color = '#888888'
         if color:
             sectionVotes[section].append( (numVotes, color) )
@@ -75,9 +75,11 @@ def getPoints(sectionVotes):
 
 
 def saveScatter(points, fileName):
+    # do the matplolib setup dance
     fig     = plt.figure()
     ax = fig.add_axes([0, 0, 1, 1])
 
+    # render the island (i.e. all districts including demerged ones) in white
     patches = []
     with open ("districts.json", "r") as f:
         districts=json.loads(f.read())
@@ -93,6 +95,7 @@ def saveScatter(points, fileName):
     p = PatchCollection(patches, facecolor='#ffffff',edgecolor="#ffffff", linewidths=0.1)
     ax.add_collection(p)
 
+    # render the Montreal districts in white with grey outlines
     patches = []
     with open ("districtelect.json", "r") as f:
         districts=json.loads(f.read())
@@ -107,10 +110,13 @@ def saveScatter(points, fileName):
     p = PatchCollection(patches, facecolor='#ffffff',edgecolor="#bbbbbb", linewidths=0.1)
     ax.add_collection(p)
 
+    # render the points
     xcoords = [p.x for (p,c) in points]
     ycoords = [p.y for (p,c) in points]
     colors = [c for (p,c) in points]
     plt.scatter(xcoords, ycoords, c = colors, marker='.', s=0.3, alpha=0.5, lw = 0)
+    
+    # turn off the axes and set the background colour to soothing grey
     ax.axis('off')
     fig.savefig(fileName, facecolor="#bbbbbb", dpi=1000, pad_inches=0)
 
